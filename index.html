@@ -21,10 +21,20 @@
         <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" class="lang-btn" data-lang="pl" aria-pressed="false">PL</button>
       </div>
-      <button type="button" class="print-btn" id="printBtn" title="Save as PDF">
-        <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
-        <span data-i18n="ui.print">Save PDF</span>
-      </button>
+      <div class="download" id="downloadMenu">
+        <button type="button" class="dl-btn" id="dlMain" title="Download CV as PDF">
+          <i class="fa-solid fa-download" aria-hidden="true"></i>
+          <span class="dl-label" data-i18n="ui.download">Download</span>
+          <i class="fa-solid fa-spinner fa-spin dl-spinner" aria-hidden="true" hidden></i>
+        </button>
+        <button type="button" class="dl-caret" id="dlCaret" aria-haspopup="true" aria-expanded="false" aria-label="Download format options">
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <ul class="dl-menu" id="dlMenu" role="menu" hidden>
+          <li role="none"><button type="button" role="menuitem" data-format="pdf"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> <span data-i18n="ui.pdf">PDF document</span></button></li>
+          <li role="none"><button type="button" role="menuitem" data-format="png"><i class="fa-solid fa-file-image" aria-hidden="true"></i> <span data-i18n="ui.png">PNG image</span></button></li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -218,6 +228,8 @@
     <span>© <span id="year"></span> Adam Cieślak</span>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="script.js"></script>
 </body>
 </html>

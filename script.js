@@ -5,6 +5,9 @@
 const I18N = {
   en: {
     'ui.print': 'Save PDF',
+    'ui.download': 'Download',
+    'ui.pdf': 'PDF document',
+    'ui.png': 'PNG image',
     'hero.title': 'AI Engineer',
     'hero.subtitle': 'LLMs · Speech · Diffusion',
 
@@ -71,6 +74,9 @@ const I18N = {
 
   pl: {
     'ui.print': 'Zapisz PDF',
+    'ui.download': 'Pobierz',
+    'ui.pdf': 'Dokument PDF',
+    'ui.png': 'Obraz PNG',
     'hero.title': 'Inżynier AI',
     'hero.subtitle': 'LLM · Mowa · Dyfuzja',
 
@@ -186,6 +192,122 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => applyLang(btn.dataset.lang));
   });
 
-  const printBtn = document.getElementById('printBtn');
-  if (printBtn) printBtn.addEventListener('click', () => window.print());
+  setupDownload();
 });
+
+/* ----------------------- Download (PDF / PNG) ----------------------- */
+function currentLangCode() {
+  return (document.documentElement.lang || 'en').toUpperCase();
+}
+function fileBase() {
+  return 'Adam_Cieslak_CV_' + currentLangCode();
+}
+
+async function renderCanvas() {
+  const el = document.getElementById('cv');
+  // Render at higher resolution for crisp text/icons.
+  return html2canvas(el, {
+    scale: Math.min(window.devicePixelRatio || 1, 2) * 1.5,
+    useCORS: true,
+    backgroundColor: '#ffffff',
+    windowWidth: el.scrollWidth,
+    windowHeight: el.scrollHeight
+  });
+}
+
+function triggerDownload(href, filename) {
+  const a = document.createElement('a');
+  a.href = href;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+async function downloadPNG() {
+  const canvas = await renderCanvas();
+  await new Promise((resolve) => {
+    canvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      triggerDownload(url, fileBase() + '.png');
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+      resolve();
+    }, 'image/png');
+  });
+}
+
+async function downloadPDF() {
+  const canvas = await renderCanvas();
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  const pageW = pdf.internal.pageSize.getWidth();
+  const pageH = pdf.internal.pageSize.getHeight();
+  const imgData = canvas.toDataURL('image/jpeg', 0.95);
+  const imgW = pageW;
+  const imgH = (canvas.height * imgW) / canvas.width;
+
+  let heightLeft = imgH;
+  pdf.addImage(imgData, 'JPEG', 0, 0, imgW, imgH);
+  heightLeft -= pageH;
+  while (heightLeft > 0) {
+    const position = heightLeft - imgH;
+    pdf.addPage();
+    pdf.addImage(imgData, 'JPEG', 0, position, imgW, imgH);
+    heightLeft -= pageH;
+  }
+  pdf.save(fileBase() + '.pdf');
+}
+
+function setupDownload() {
+  const wrap = document.getElementById('downloadMenu');
+  const main = document.getElementById('dlMain');
+  const caret = document.getElementById('dlCaret');
+  const menu = document.getElementById('dlMenu');
+  if (!wrap || !main || !caret || !menu) return;
+
+  const spinner = main.querySelector('.dl-spinner');
+  const label = main.querySelector('.dl-label');
+
+  const openMenu = () => { menu.hidden = false; caret.setAttribute('aria-expanded', 'true'); };
+  const closeMenu = () => { menu.hidden = true; caret.setAttribute('aria-expanded', 'false'); };
+
+  async function run(format) {
+    closeMenu();
+    if (wrap.classList.contains('is-busy')) return;
+    // Library availability guard — fall back to print for PDF.
+    if (typeof html2canvas === 'undefined' || (format === 'pdf' && !window.jspdf)) {
+      window.print();
+      return;
+    }
+    wrap.classList.add('is-busy');
+    if (spinner) spinner.hidden = false;
+    if (label) label.textContent = '…';
+    try {
+      if (format === 'png') await downloadPNG();
+      else await downloadPDF();
+    } catch (err) {
+      console.error('Download failed:', err);
+      window.print();
+    } finally {
+      wrap.classList.remove('is-busy');
+      if (spinner) spinner.hidden = true;
+      applyLang(document.documentElement.lang || 'en'); // restore label text
+    }
+  }
+
+  main.addEventListener('click', () => run('pdf'));
+  caret.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.hidden ? openMenu() : closeMenu();
+  });
+  menu.querySelectorAll('button[data-format]').forEach((b) => {
+    b.addEventListener('click', () => run(b.dataset.format));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!wrap.contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+}
