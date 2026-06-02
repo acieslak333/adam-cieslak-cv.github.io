@@ -9,6 +9,9 @@ const I18N = {
     'ui.pdf': 'PDF document',
     'ui.png': 'PNG image',
     'pub.view': 'View paper',
+    'nav.cv': 'Curriculum Vitae',
+    'main.skills': 'Skills & Tools',
+    'hero.cta': 'Download CV',
     'hero.title': 'AI Engineer',
     'hero.subtitle': 'LLMs · Speech · Diffusion',
 
@@ -79,6 +82,9 @@ const I18N = {
     'ui.pdf': 'Dokument PDF',
     'ui.png': 'Obraz PNG',
     'pub.view': 'Zobacz publikację',
+    'nav.cv': 'Życiorys',
+    'main.skills': 'Umiejętności i narzędzia',
+    'hero.cta': 'Pobierz CV',
     'hero.title': 'Inżynier AI',
     'hero.subtitle': 'LLM · Mowa · Dyfuzja',
 
@@ -194,39 +200,16 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => applyLang(btn.dataset.lang));
   });
 
-  setupTheme();
   setupReveal();
   setupDownload();
+
+  const heroBtn = document.getElementById('heroDownload');
+  if (heroBtn) heroBtn.addEventListener('click', () => runDownload('pdf'));
 });
-
-/* ----------------------- Theme (light / dark) ----------------------- */
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  const icon = document.querySelector('#themeBtn i');
-  if (icon) icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-  try { localStorage.setItem('cv-theme', theme); } catch (e) {}
-}
-
-function setupTheme() {
-  let theme = 'light'; // light is the default
-  try {
-    const saved = localStorage.getItem('cv-theme');
-    if (saved === 'dark' || saved === 'light') theme = saved; // honour explicit choice only
-  } catch (e) {}
-  applyTheme(theme);
-
-  const btn = document.getElementById('themeBtn');
-  if (btn) {
-    btn.addEventListener('click', () => {
-      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-    });
-  }
-}
 
 /* ----------------------- Scroll reveal ----------------------- */
 function setupReveal() {
-  const els = document.querySelectorAll('.main-block');
+  const els = document.querySelectorAll('.tile');
   if (!('IntersectionObserver' in window)) return; // leave fully visible
   els.forEach((el) => el.classList.add('reveal'));
   const io = new IntersectionObserver((entries) => {
@@ -257,9 +240,8 @@ async function renderCanvas() {
     backgroundColor: '#ffffff',
     windowWidth: el.scrollWidth,
     windowHeight: el.scrollHeight,
-    // Capture in light theme with all sections revealed, regardless of screen state.
+    // Render a clean ink-on-white version with all sections revealed (dark tiles flatten to white).
     onclone: (doc) => {
-      doc.documentElement.setAttribute('data-theme', 'light');
       const c = doc.getElementById('cv');
       if (c) c.classList.add('exporting');
     }
@@ -309,6 +291,26 @@ async function downloadPDF() {
   pdf.save(fileBase() + '.pdf');
 }
 
+async function runDownload(format) {
+  const wrap = document.getElementById('downloadMenu');
+  if (wrap && wrap.classList.contains('is-busy')) return;
+  // Library availability guard — fall back to print for PDF.
+  if (typeof html2canvas === 'undefined' || (format === 'pdf' && !window.jspdf)) {
+    window.print();
+    return;
+  }
+  if (wrap) wrap.classList.add('is-busy');
+  try {
+    if (format === 'png') await downloadPNG();
+    else await downloadPDF();
+  } catch (err) {
+    console.error('Download failed:', err);
+    window.print();
+  } finally {
+    if (wrap) wrap.classList.remove('is-busy');
+  }
+}
+
 function setupDownload() {
   const wrap = document.getElementById('downloadMenu');
   const main = document.getElementById('dlMain');
@@ -319,33 +321,13 @@ function setupDownload() {
   const openMenu = () => { menu.hidden = false; caret.setAttribute('aria-expanded', 'true'); };
   const closeMenu = () => { menu.hidden = true; caret.setAttribute('aria-expanded', 'false'); };
 
-  async function run(format) {
-    closeMenu();
-    if (wrap.classList.contains('is-busy')) return;
-    // Library availability guard — fall back to print for PDF.
-    if (typeof html2canvas === 'undefined' || (format === 'pdf' && !window.jspdf)) {
-      window.print();
-      return;
-    }
-    wrap.classList.add('is-busy');
-    try {
-      if (format === 'png') await downloadPNG();
-      else await downloadPDF();
-    } catch (err) {
-      console.error('Download failed:', err);
-      window.print();
-    } finally {
-      wrap.classList.remove('is-busy');
-    }
-  }
-
-  main.addEventListener('click', () => run('pdf'));
+  main.addEventListener('click', () => { closeMenu(); runDownload('pdf'); });
   caret.addEventListener('click', (e) => {
     e.stopPropagation();
     menu.hidden ? openMenu() : closeMenu();
   });
   menu.querySelectorAll('button[data-format]').forEach((b) => {
-    b.addEventListener('click', () => run(b.dataset.format));
+    b.addEventListener('click', () => { closeMenu(); runDownload(b.dataset.format); });
   });
 
   document.addEventListener('click', (e) => {

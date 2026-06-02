@@ -5,15 +5,14 @@ A responsive, bilingual (English / Polish) online CV, deployable on GitHub Pages
 🔗 **Live site:** https://acieslak333.github.io/adam-cieslak-cv.github.io/
 
 ## Features
-- 📱 Responsive layout — single-column on mobile, two-column sidebar on desktop
+- 🍏 Apple-inspired design language — full-bleed alternating light/dark "tiles", tight display typography, two-row frosted nav, pill CTAs
+- 🌿 Single **sage-green** accent carries every interactive element
+- 📱 Fully responsive — single-column tiles, collapsing sub-nav
 - 🌐 Language switch (EN / PL) with preference saved in the browser
-- 🌓 Dark / light mode (follows system preference, remembers your choice)
-- ⬇️ Download button — export as **PDF** (default) or **PNG**, in the selected language (always rendered in light theme)
-- ⚡ Highlights strip + clickable publication links
-- 🔗 Rich social-preview cards (Open Graph / Twitter) + favicon + `schema.org/Person` structured data
-- ✨ Subtle scroll-reveal animation (respects `prefers-reduced-motion`)
-- 🖨️ Print-optimised stylesheet (forces light theme on paper)
-- 🎨 Design mirrors the LaTeX source (navy sidebar, blue accents)
+- ⬇️ Download button — export as **PDF** (default) or **PNG**; the hero CTA also downloads the PDF. Exports render as a clean ink-on-white version
+- 🔗 Clickable publication links + rich social-preview cards (Open Graph / Twitter) + favicon + `schema.org/Person` structured data
+- ✨ Subtle scroll-reveal on tiles (respects `prefers-reduced-motion`)
+- 🖨️ Print stylesheet flattens dark tiles to ink-on-white
 
 ## Files
 - `index.html` — page structure and content
