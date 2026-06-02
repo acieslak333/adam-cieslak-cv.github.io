@@ -194,7 +194,8 @@ a:hover { text-decoration: underline; }
 }
 .lead-body strong { font-weight: 600; }
 
-/* CTA pills (used by Download menu / any future CTA) */
+/* CTA pills */
+.cta-row { display: flex; gap: 0.7rem; flex-wrap: wrap; justify-content: center; margin-top: 1.8rem; }
 .pill {
   display: inline-flex; align-items: center; justify-content: center;
   font-size: 17px; font-weight: 400; letter-spacing: -0.01em;
@@ -298,6 +299,7 @@ a:hover { text-decoration: underline; }
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
 .cv.exporting .reveal { opacity: 1 !important; transform: none !important; }
+.cv.exporting .cta-row { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1 !important; transform: none !important; transition: none; }
@@ -320,7 +322,7 @@ a:hover { text-decoration: underline; }
 
 /* ---------------------- Print / export (clean ink-on-white) ---------------------- */
 @media print {
-  .global-nav, .sub-nav { display: none !important; }
+  .global-nav, .sub-nav, .cta-row { display: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
   body { background: #fff; }
   .tile, .tile-dark, .tile-dark-2, .tile-parchment, .footer { background: #fff !important; color: var(--ink) !important; padding: 22px 0 !important; }
