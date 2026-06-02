@@ -77,22 +77,69 @@ a:hover { text-decoration: underline; }
 }
 .lang-btn.is-active { background: var(--sidebar-accent); color: #08213d; }
 
-.print-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
+/* Download split-button + menu */
+.download { position: relative; display: inline-flex; }
+.dl-btn, .dl-caret {
   border: 1px solid rgba(255, 255, 255, 0.25);
-  background: transparent;
+  background: var(--accent);
   color: #fff;
   font: inherit;
   font-weight: 600;
   font-size: 0.8rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 999px;
   cursor: pointer;
-  transition: background 0.18s, border-color 0.18s;
+  transition: background 0.18s, border-color 0.18s, opacity 0.18s;
 }
-.print-btn:hover { background: rgba(255, 255, 255, 0.12); }
+.dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px 0 0 999px;
+  border-right: 0;
+}
+.dl-caret {
+  padding: 0.35rem 0.6rem;
+  border-radius: 0 999px 999px 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+.dl-btn:hover, .dl-caret:hover { background: #1d4ed8; }
+.dl-caret[aria-expanded="true"] .fa-chevron-down { transform: rotate(180deg); }
+.dl-caret .fa-chevron-down { transition: transform 0.18s; }
+.download.is-busy .dl-btn, .download.is-busy .dl-caret { opacity: 0.7; pointer-events: none; }
+.dl-spinner { margin-left: 0.1rem; }
+
+.dl-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 168px;
+  margin: 0;
+  padding: 0.3rem;
+  list-style: none;
+  background: #fff;
+  color: var(--body);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(15, 37, 64, 0.28);
+  z-index: 60;
+}
+.dl-menu[hidden] { display: none; }
+.dl-menu button {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 0.82rem;
+  color: var(--body);
+  text-align: left;
+  padding: 0.5rem 0.65rem;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.dl-menu button:hover { background: #EEF2FF; color: var(--accent); }
+.dl-menu button i { width: 16px; text-align: center; color: var(--accent); }
 
 /* ---------------------- CV card ---------------------- */
 .cv {
