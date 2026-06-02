@@ -342,3 +342,65 @@ a:hover { text-decoration: underline; }
 .cv.exporting .skill-label { color: var(--primary) !important; }
 .cv.exporting .skill-group p { color: var(--ink-80) !important; }
 .cv.exporting .role { border-top-color: var(--divider-soft) !important; }
+
+/* ===================================================================
+   Hidden A4 export sheet — source for the downloaded PDF / PNG
+   Page 1: compact two-column CV · Page 2: consent only
+   =================================================================== */
+#export-root {
+  position: fixed; left: -100000px; top: 0;
+  width: 794px; /* A4 width @96dpi */
+  font-feature-settings: normal;
+  letter-spacing: 0;
+}
+.sheet {
+  width: 794px; min-height: 1123px; /* A4 @96dpi */
+  background: #fff; color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.4; overflow: hidden;
+}
+#sheet-cv { display: grid; grid-template-columns: 252px 1fr; }
+
+/* sidebar */
+.x-side { background: #f4f6f2; padding: 30px 22px; }
+.x-name { font-size: 26px; font-weight: 800; line-height: 1.05; color: var(--ink); letter-spacing: -0.02em; }
+.x-role { font-size: 12px; font-weight: 600; color: var(--primary); margin-top: 2px; }
+.x-rule { width: 34px; height: 3px; background: var(--primary); border-radius: 2px; margin: 10px 0 4px; }
+.x-rule.center { margin: 12px auto 18px; }
+.x-sh { margin: 14px 0 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); }
+.x-c { margin: 0 0 3px; font-size: 9.5px; line-height: 1.45; color: #3a3a3a; word-break: break-word; }
+.x-c strong { color: var(--ink); font-weight: 700; }
+
+/* main column */
+.x-main { padding: 30px 26px; }
+.x-mh { margin: 0 0 5px; font-size: 15px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; border-bottom: 2px solid var(--primary); padding-bottom: 2px; display: inline-block; }
+.x-mh:not(:first-child) { margin-top: 14px; }
+.x-sum { margin: 0; font-size: 10px; line-height: 1.5; color: #2d2d2d; }
+.x-sum strong, .x-b strong, .x-pa strong { color: var(--ink); font-weight: 700; }
+
+.x-role-block { margin-top: 8px; }
+.x-rh { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.x-rt { font-size: 11.5px; font-weight: 700; color: var(--ink); }
+.x-rd { font-size: 8.5px; color: #777; white-space: nowrap; }
+.x-ro { font-size: 9.5px; color: var(--primary); font-weight: 600; margin-bottom: 2px; }
+.x-b { margin: 2px 0 0; padding-left: 13px; }
+.x-b li { font-size: 9.5px; line-height: 1.42; color: #2d2d2d; margin-bottom: 2px; }
+.x-b li::marker { color: var(--primary); }
+.x-rdesc { margin: 2px 0 0; font-size: 9.5px; color: #2d2d2d; line-height: 1.42; }
+
+.x-pub { margin-top: 7px; }
+.x-pt { font-size: 10px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.x-pv { color: var(--primary); font-weight: 600; }
+.x-pa { font-size: 9px; color: #444; line-height: 1.4; margin-top: 1px; }
+.x-pc { font-size: 8.5px; color: #777; font-style: italic; margin-top: 1px; }
+
+.x-edurow { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-top: 4px; }
+.x-ed { font-size: 10.5px; font-weight: 700; color: var(--ink); }
+.x-edd { font-size: 8.5px; color: #777; white-space: nowrap; }
+.x-edus { font-size: 9px; color: #777; margin-top: 3px; }
+
+/* consent page */
+#sheet-consent { display: flex; align-items: center; justify-content: center; padding: 90px 80px; }
+.x-consent { max-width: 560px; text-align: center; }
+.x-consent-h { margin: 0; font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; }
+.x-consent-t { margin: 0; font-size: 11px; line-height: 1.7; color: #555; text-align: justify; }

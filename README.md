@@ -9,7 +9,7 @@ A responsive, bilingual (English / Polish) online CV, deployable on GitHub Pages
 - 🌿 Single **sage-green** accent carries every interactive element
 - 📱 Fully responsive — single-column tiles, collapsing sub-nav
 - 🌐 Language switch (EN / PL) with preference saved in the browser
-- ⬇️ Download button — export as **PDF** (default) or **PNG**; the hero CTA also downloads the PDF. Exports render as a clean ink-on-white version
+- ⬇️ Download button — export as **PDF** (default) or **PNG** in the active language. The PDF is a print-ready **2-page A4**: page 1 is a compact one-page CV, page 2 is the data-processing consent
 - 🔗 Clickable publication links + rich social-preview cards (Open Graph / Twitter) + favicon + `schema.org/Person` structured data
 - ✨ Subtle scroll-reveal on tiles (respects `prefers-reduced-motion`)
 - 🖨️ Print stylesheet flattens dark tiles to ink-on-white

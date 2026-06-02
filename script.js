@@ -231,20 +231,14 @@ function fileBase() {
   return 'Adam_Cieslak_CV_' + currentLangCode();
 }
 
-async function renderCanvas() {
-  const el = document.getElementById('cv');
-  // Render at higher resolution for crisp text/icons.
+async function renderSheet(id) {
+  const el = document.getElementById(id);
   return html2canvas(el, {
-    scale: Math.min(window.devicePixelRatio || 1, 2) * 1.5,
+    scale: 2,
     useCORS: true,
     backgroundColor: '#ffffff',
-    windowWidth: el.scrollWidth,
-    windowHeight: el.scrollHeight,
-    // Render a clean ink-on-white version with all sections revealed (dark tiles flatten to white).
-    onclone: (doc) => {
-      const c = doc.getElementById('cv');
-      if (c) c.classList.add('exporting');
-    }
+    windowWidth: 794,
+    windowHeight: el.scrollHeight
   });
 }
 
@@ -258,7 +252,8 @@ function triggerDownload(href, filename) {
 }
 
 async function downloadPNG() {
-  const canvas = await renderCanvas();
+  // PNG = the one-page CV sheet.
+  const canvas = await renderSheet('sheet-cv');
   await new Promise((resolve) => {
     canvas.toBlob((blob) => {
       const url = URL.createObjectURL(blob);
@@ -270,26 +265,26 @@ async function downloadPNG() {
 }
 
 async function downloadPDF() {
-  const canvas = await renderCanvas();
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-  const pageW = pdf.internal.pageSize.getWidth();
-  const pageH = pdf.internal.pageSize.getHeight();
-  const imgData = canvas.toDataURL('image/jpeg', 0.95);
-  const imgW = pageW;
-  const imgH = (canvas.height * imgW) / canvas.width;
+  const pageW = pdf.internal.pageSize.getWidth();   // 210
+  const pageH = pdf.internal.pageSize.getHeight();  // 297
 
-  let heightLeft = imgH;
-  pdf.addImage(imgData, 'JPEG', 0, 0, imgW, imgH);
-  heightLeft -= pageH;
-  while (heightLeft > 0) {
-    const position = heightLeft - imgH;
-    pdf.addPage();
-    pdf.addImage(imgData, 'JPEG', 0, position, imgW, imgH);
-    heightLeft -= pageH;
+  // Page 1 = CV (fit to one page); Page 2 = consent only.
+  const ids = ['sheet-cv', 'sheet-consent'];
+  for (let i = 0; i < ids.length; i++) {
+    const canvas = await renderSheet(ids[i]);
+    const ratio = Math.min(pageW / canvas.width, pageH / canvas.height);
+    const w = canvas.width * ratio;
+    const h = canvas.height * ratio;
+    const x = (pageW - w) / 2;
+    const y = (pageH - h) / 2;
+    if (i > 0) pdf.addPage();
+    pdf.addImage(canvas.toDataURL('image/jpeg', 0.96), 'JPEG', x, y, w, h);
   }
   pdf.save(fileBase() + '.pdf');
 }
+
 
 async function runDownload(format) {
   const wrap = document.getElementById('downloadMenu');
