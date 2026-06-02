@@ -2,16 +2,19 @@
 
 A responsive, bilingual (English / Polish) online CV, deployable on GitHub Pages.
 
+🔗 **Live site:** https://acieslak333.github.io/adam-cieslak-cv.github.io/
+
 ## Features
 - 📱 Responsive layout — single-column on mobile, two-column sidebar on desktop
 - 🌐 Language switch (EN / PL) with preference saved in the browser
-- 🖨️ "Save PDF" button (browser print) with a print-optimised stylesheet
+- ⬇️ Download button — export as **PDF** (default) or **PNG**, in the selected language
+- 🖨️ Print-optimised stylesheet (graceful fallback to the browser print dialog)
 - 🎨 Design mirrors the LaTeX source (navy sidebar, blue accents)
 
 ## Files
 - `index.html` — page structure and content
 - `styles.css` — styling (responsive + print)
-- `script.js` — language switching and PDF export
+- `script.js` — language switching and PDF/PNG export
 
 ## Local preview
 Open `index.html` in a browser, or serve the folder:
@@ -22,6 +25,13 @@ python3 -m http.server 8000
 ```
 
 ## Deployment (GitHub Pages)
-In the repository settings → **Pages**, set the source to the branch root.
-With a repo named `adam-cieslak-cv.github.io`, the site is served at
-`https://<user>.github.io/`.
+In the repository **Settings → Pages**, set **Source** to *Deploy from a branch*
+and choose **`main`** / `root`. The site is then served at:
+
+```
+https://acieslak333.github.io/adam-cieslak-cv.github.io/
+```
+
+> **Want a clean root URL** (`https://acieslak333.github.io/`)? Rename the repo to
+> `acieslak333.github.io` — GitHub then treats it as your user site and serves it
+> from the domain root.
