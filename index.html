@@ -3,10 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Adam Cieślak — AI Engineer. CV / Resume. LLMs, Speech, Diffusion, Machine Translation." />
+  <meta name="description" content="Adam Cieślak — AI Engineer at Samsung R&D Poland. LLMs, speech processing, diffusion and on-device machine translation. Co-author of 3 peer-reviewed papers (Interspeech ×2, ICASSP)." />
   <meta name="author" content="Adam Cieślak" />
-  <meta name="theme-color" content="#0F2540" />
+  <meta name="theme-color" content="#0F2540" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0B1B30" media="(prefers-color-scheme: dark)" />
   <title>Adam Cieślak — AI Engineer · CV</title>
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Adam Cieślak — AI Engineer" />
+  <meta property="og:description" content="AI Engineer at Samsung R&D Poland — LLMs, speech, diffusion, on-device machine translation. Co-author of 3 peer-reviewed papers." />
+  <meta property="og:url" content="https://acieslak333.github.io/adam-cieslak-cv.github.io/" />
+  <meta property="og:image" content="https://acieslak333.github.io/adam-cieslak-cv.github.io/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="profile:first_name" content="Adam" />
+  <meta property="profile:last_name" content="Cieślak" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Adam Cieślak — AI Engineer" />
+  <meta name="twitter:description" content="AI Engineer — LLMs, speech, diffusion, on-device machine translation. 3 peer-reviewed papers." />
+  <meta name="twitter:image" content="https://acieslak333.github.io/adam-cieslak-cv.github.io/og-image.png" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adam Cieślak",
+    "jobTitle": "AI Engineer",
+    "email": "mailto:adam.cieslak333@gmail.com",
+    "url": "https://acieslak333.github.io/adam-cieslak-cv.github.io/",
+    "image": "https://acieslak333.github.io/adam-cieslak-cv.github.io/og-image.png",
+    "worksFor": { "@type": "Organization", "name": "Samsung R&D Institute Poland" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Cracow", "addressCountry": "PL" },
+    "alumniOf": "AGH University of Science and Technology",
+    "knowsLanguage": ["English", "Polish", "Japanese", "Chinese"],
+    "sameAs": [
+      "https://www.linkedin.com/in/adam-cie%C5%9Blak-432765262/",
+      "https://github.com/acieslak333"
+    ],
+    "knowsAbout": ["Large Language Models", "Speech Processing", "Diffusion Models", "Machine Translation", "PyTorch", "AWS SageMaker", "On-Device ML"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -21,6 +61,9 @@
         <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" class="lang-btn" data-lang="pl" aria-pressed="false">PL</button>
       </div>
+      <button type="button" class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+      </button>
       <div class="download" id="downloadMenu">
         <button type="button" class="dl-btn" id="dlMain" title="Download CV as PDF">
           <i class="fa-solid fa-download" aria-hidden="true"></i>
@@ -109,6 +152,12 @@
 
     <!-- ===================== MAIN ===================== -->
     <div class="content">
+      <section class="stats" aria-label="Highlights">
+        <div class="stat"><span class="stat-num">4+</span><span class="stat-label" data-i18n="stat.years">Years in production AI</span></div>
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label" data-i18n="stat.pubs">Peer-reviewed papers</span></div>
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label" data-i18n="stat.models">On-device MT pairs shipped</span></div>
+      </section>
+
       <section class="main-block">
         <h2 class="main-heading" data-i18n="main.summary">Summary</h2>
         <p class="summary" data-i18n="summary.text" data-i18n-html>
@@ -185,18 +234,21 @@
           <p class="pub-head"><span class="pub-title">LAFUFU: Latent Acoustic Features for Ultra-Fast Utterance Restoration</span> <span class="pub-venue">— ICASSP 2025</span></p>
           <p class="pub-authors">Łazarz, R., Wosik, M., Pudo, M., Krywalska, U., <strong>Cieślak, A.</strong> <span data-i18n="pub.1.desc">— Latent-space diffusion for speech enhancement; multifold inference-speed gains on EARS-WHAM/EARS-Reverb.</span></p>
           <p class="pub-contrib"><em><span data-i18n="pub.contrib">My contribution:</span> <span data-i18n="pub.1.contrib">implementation, experiments, paper review.</span></em></p>
+          <a class="pub-link" href="https://scholar.google.com/scholar?q=LAFUFU%3A+Latent+Acoustic+Features+for+Ultra-Fast+Utterance+Restoration" target="_blank" rel="noopener"><i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i> <span data-i18n="pub.view">View paper</span></a>
         </article>
 
         <article class="pub">
           <p class="pub-head"><span class="pub-title">Non-Linear Inference Time Intervention: Improving LLM Truthfulness</span> <span class="pub-venue">— Interspeech 2024</span></p>
           <p class="pub-authors">Hościłowicz, J., Wiącek, A., Chojnacki, J., <strong>Cieślak, A.</strong>, Michoń, L., Janicki, A. <span data-i18n="pub.2.desc">— Non-linear probing on LLM attention heads; &gt;16% MC1 on TruthfulQA over baseline ITI without fine-tuning.</span></p>
           <p class="pub-contrib"><em><span data-i18n="pub.contrib">My contribution:</span> <span data-i18n="pub.2.contrib">experiments, paper preparation and review.</span></em></p>
+          <a class="pub-link" href="https://scholar.google.com/scholar?q=Non-Linear+Inference+Time+Intervention%3A+Improving+LLM+Truthfulness" target="_blank" rel="noopener"><i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i> <span data-i18n="pub.view">View paper</span></a>
         </article>
 
         <article class="pub">
           <p class="pub-head"><span class="pub-title">MOCKS 1.0: Multilingual Open Custom Keyword Spotting Testset</span> <span class="pub-venue">— Interspeech 2023</span></p>
           <p class="pub-authors">Pudo, M., Wosik, M., <strong>Cieślak, A.</strong>, Krzywdziak, J., Łukasiak, B., Janicki, A. <span data-i18n="pub.3.desc">— Public testset, ~50,000 keywords, 5 languages.</span></p>
           <p class="pub-contrib"><em><span data-i18n="pub.contrib">My contribution:</span> <span data-i18n="pub.3.contrib">dataset preparation and processing scripts.</span></em></p>
+          <a class="pub-link" href="https://scholar.google.com/scholar?q=MOCKS+1.0%3A+Multilingual+Open+Custom+Keyword+Spotting+Testset" target="_blank" rel="noopener"><i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i> <span data-i18n="pub.view">View paper</span></a>
         </article>
       </section>
 

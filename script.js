@@ -8,6 +8,10 @@ const I18N = {
     'ui.download': 'Download',
     'ui.pdf': 'PDF document',
     'ui.png': 'PNG image',
+    'stat.years': 'Years in production AI',
+    'stat.pubs': 'Peer-reviewed papers',
+    'stat.models': 'On-device MT pairs shipped',
+    'pub.view': 'View paper',
     'hero.title': 'AI Engineer',
     'hero.subtitle': 'LLMs · Speech · Diffusion',
 
@@ -77,6 +81,10 @@ const I18N = {
     'ui.download': 'Pobierz',
     'ui.pdf': 'Dokument PDF',
     'ui.png': 'Obraz PNG',
+    'stat.years': 'Lata w produkcyjnym AI',
+    'stat.pubs': 'Recenzowane publikacje',
+    'stat.models': 'Wdrożone pary MT na urządzeniu',
+    'pub.view': 'Zobacz publikację',
     'hero.title': 'Inżynier AI',
     'hero.subtitle': 'LLM · Mowa · Dyfuzja',
 
@@ -192,8 +200,52 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => applyLang(btn.dataset.lang));
   });
 
+  setupTheme();
+  setupReveal();
   setupDownload();
 });
+
+/* ----------------------- Theme (light / dark) ----------------------- */
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon = document.querySelector('#themeBtn i');
+  if (icon) icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  try { localStorage.setItem('cv-theme', theme); } catch (e) {}
+}
+
+function setupTheme() {
+  let theme = 'light';
+  try {
+    const saved = localStorage.getItem('cv-theme');
+    if (saved === 'dark' || saved === 'light') theme = saved;
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark';
+  } catch (e) {}
+  applyTheme(theme);
+
+  const btn = document.getElementById('themeBtn');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+  }
+}
+
+/* ----------------------- Scroll reveal ----------------------- */
+function setupReveal() {
+  const els = document.querySelectorAll('.main-block, .stats');
+  if (!('IntersectionObserver' in window)) return; // leave fully visible
+  els.forEach((el) => el.classList.add('reveal'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        en.target.classList.add('is-visible');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach((el) => io.observe(el));
+}
 
 /* ----------------------- Download (PDF / PNG) ----------------------- */
 function currentLangCode() {
@@ -211,7 +263,13 @@ async function renderCanvas() {
     useCORS: true,
     backgroundColor: '#ffffff',
     windowWidth: el.scrollWidth,
-    windowHeight: el.scrollHeight
+    windowHeight: el.scrollHeight,
+    // Capture in light theme with all sections revealed, regardless of screen state.
+    onclone: (doc) => {
+      doc.documentElement.setAttribute('data-theme', 'light');
+      const c = doc.getElementById('cv');
+      if (c) c.classList.add('exporting');
+    }
   });
 }
 

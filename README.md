@@ -7,8 +7,12 @@ A responsive, bilingual (English / Polish) online CV, deployable on GitHub Pages
 ## Features
 - 📱 Responsive layout — single-column on mobile, two-column sidebar on desktop
 - 🌐 Language switch (EN / PL) with preference saved in the browser
-- ⬇️ Download button — export as **PDF** (default) or **PNG**, in the selected language
-- 🖨️ Print-optimised stylesheet (graceful fallback to the browser print dialog)
+- 🌓 Dark / light mode (follows system preference, remembers your choice)
+- ⬇️ Download button — export as **PDF** (default) or **PNG**, in the selected language (always rendered in light theme)
+- ⚡ Highlights strip + clickable publication links
+- 🔗 Rich social-preview cards (Open Graph / Twitter) + favicon + `schema.org/Person` structured data
+- ✨ Subtle scroll-reveal animation (respects `prefers-reduced-motion`)
+- 🖨️ Print-optimised stylesheet (forces light theme on paper)
 - 🎨 Design mirrors the LaTeX source (navy sidebar, blue accents)
 
 ## Files
