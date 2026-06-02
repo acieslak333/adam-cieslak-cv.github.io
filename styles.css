@@ -1,47 +1,49 @@
 /* ===================================================================
    Adam Cieślak — CV  |  responsive, bilingual, print-ready
-   Palette mirrors the LaTeX source (navy sidebar, blue accents)
+   Palette: sage sidebar, warm beige canvas, sand-gold accents
    =================================================================== */
 
 :root {
-  --sidebar:        #0F2540;
-  --sidebar-2:      #143055;
-  --sidebar-text:   #E2E8F0;
-  --sidebar-accent: #60A5FA;
-  --primary:        #0F2540;
-  --accent:         #2563EB;
-  --body:           #2D3748;
-  --muted:          #718096;
-  --light:          #A0AEC0;
-  --page-bg:        #E9EDF2;
-  --card-bg:        #FFFFFF;
-  --rule:           #E2E8F0;
-  --subtle-bg:      #F7F9FC;
-  --menu-bg:        #FFFFFF;
-  --menu-hover:     #EEF2FF;
+  --sidebar:        #3B4A3E;   /* deep sage */
+  --sidebar-2:      #46564A;
+  --sidebar-text:   #E8EADF;
+  --sidebar-accent: #C7B383;   /* sand / gold */
+  --primary:        #3B4A3E;   /* headings */
+  --accent:         #5A6E47;   /* sage-olive (links, rules) */
+  --body:           #43473E;
+  --muted:          #8A8472;
+  --light:          #ABA593;
+  --page-bg:        #E9E3D5;    /* beige */
+  --card-bg:        #F8F4EB;    /* cream */
+  --rule:           #E0D8C6;
+  --subtle-bg:      #F1EBDD;
+  --menu-bg:        #F8F4EB;
+  --menu-hover:     #ECE4D3;
 
   --sidebar-w: 19rem;
   --maxw: 64rem;
   --radius: 14px;
-  --shadow: 0 18px 50px rgba(15, 37, 64, 0.16);
+  --shadow: 0 18px 50px rgba(59, 74, 62, 0.18);
 }
 
-/* Dark theme */
+/* Dark theme (deep-forest variant) */
 [data-theme="dark"] {
-  --sidebar:        #0A1A30;
-  --sidebar-2:      #0F2440;
-  --primary:        #E8EEF6;   /* headings become light */
-  --accent:         #60A5FA;
-  --body:           #CBD5E1;
-  --muted:          #93A4BD;
-  --light:          #64748B;
-  --page-bg:        #0B1320;
-  --card-bg:        #0F1B2D;
-  --rule:           #1E2D42;
-  --subtle-bg:      #15233A;
-  --menu-bg:        #16243A;
-  --menu-hover:     #1E3050;
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --sidebar:        #1E2820;
+  --sidebar-2:      #28332A;
+  --sidebar-text:   #E3E6D8;
+  --sidebar-accent: #C7B383;
+  --primary:        #E8EADF;   /* headings become light */
+  --accent:         #A7BB86;   /* light sage for links */
+  --body:           #CFD4C3;
+  --muted:          #99A088;
+  --light:          #6E755F;
+  --page-bg:        #141813;
+  --card-bg:        #1D241E;
+  --rule:           #2C362D;
+  --subtle-bg:      #232C24;
+  --menu-bg:        #232C24;
+  --menu-hover:     #2E382F;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
 }
 
 body, .cv, .content, .sidebar {
@@ -78,7 +80,7 @@ a:hover { text-decoration: underline; }
   justify-content: space-between;
   gap: 1rem;
   padding: 0.6rem 1.1rem;
-  background: rgba(15, 37, 64, 0.92);
+  background: rgba(59, 74, 62, 0.94);
   backdrop-filter: blur(8px);
   color: #fff;
 }
@@ -103,7 +105,7 @@ a:hover { text-decoration: underline; }
   cursor: pointer;
   transition: background 0.18s, color 0.18s;
 }
-.lang-btn.is-active { background: var(--sidebar-accent); color: #08213d; }
+.lang-btn.is-active { background: var(--sidebar-accent); color: #2C3A2E; }
 
 /* Download split-button + menu */
 .download { position: relative; display: inline-flex; }
@@ -130,11 +132,10 @@ a:hover { text-decoration: underline; }
   border-radius: 0 999px 999px 0;
   border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
-.dl-btn:hover, .dl-caret:hover { background: #1d4ed8; }
+.dl-btn:hover, .dl-caret:hover { background: #485A39; }
 .dl-caret[aria-expanded="true"] .fa-chevron-down { transform: rotate(180deg); }
 .dl-caret .fa-chevron-down { transition: transform 0.18s; }
 .download.is-busy .dl-btn, .download.is-busy .dl-caret { opacity: 0.7; pointer-events: none; }
-.dl-spinner { margin-left: 0.1rem; }
 
 .dl-menu {
   position: absolute;
@@ -147,7 +148,7 @@ a:hover { text-decoration: underline; }
   background: var(--menu-bg);
   color: var(--body);
   border-radius: 10px;
-  box-shadow: 0 12px 32px rgba(15, 37, 64, 0.28);
+  box-shadow: 0 12px 32px rgba(45, 58, 46, 0.3);
   z-index: 60;
 }
 .dl-menu[hidden] { display: none; }
@@ -184,34 +185,6 @@ a:hover { text-decoration: underline; }
   transition: background 0.18s;
 }
 .theme-btn:hover { background: rgba(255, 255, 255, 0.22); }
-
-/* Stats strip */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.7rem;
-  margin-bottom: 1.4rem;
-}
-.stat {
-  text-align: center;
-  padding: 0.75rem 0.5rem;
-  background: var(--subtle-bg);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-}
-.stat-num {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--accent);
-  line-height: 1.1;
-}
-.stat-label {
-  display: block;
-  font-size: 0.72rem;
-  color: var(--muted);
-  margin-top: 0.2rem;
-}
 
 /* Publication link */
 .pub-link {
@@ -426,10 +399,6 @@ a:hover { text-decoration: underline; }
   .content { padding: 1.5rem 1.3rem 1.6rem; }
   .sidebar-inner { padding: 1.6rem 1.3rem 1.8rem; }
   .identity .name { flex-direction: row; gap: 0.4rem; font-size: 1.7rem; }
-  .stats { gap: 0.5rem; }
-  .stat { padding: 0.6rem 0.3rem; }
-  .stat-num { font-size: 1.25rem; }
-  .stat-label { font-size: 0.66rem; }
 }
 
 @media (max-width: 480px) {
@@ -443,8 +412,8 @@ a:hover { text-decoration: underline; }
 @media print {
   /* Always print in light, even if dark mode is active on screen */
   :root, [data-theme="dark"] {
-    --primary: #0F2540; --accent: #2563EB; --body: #2D3748;
-    --muted: #718096; --light: #A0AEC0; --rule: #E2E8F0;
+    --primary: #3B4A3E; --accent: #5A6E47; --body: #43473E;
+    --muted: #8A8472; --light: #ABA593; --rule: #E0D8C6;
     --page-bg: #fff; --card-bg: #fff; --subtle-bg: #fff;
   }
   body { background: #fff; }

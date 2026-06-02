@@ -8,9 +8,6 @@ const I18N = {
     'ui.download': 'Download',
     'ui.pdf': 'PDF document',
     'ui.png': 'PNG image',
-    'stat.years': 'Years in production AI',
-    'stat.pubs': 'Peer-reviewed papers',
-    'stat.models': 'On-device MT pairs shipped',
     'pub.view': 'View paper',
     'hero.title': 'AI Engineer',
     'hero.subtitle': 'LLMs · Speech · Diffusion',
@@ -46,7 +43,7 @@ const I18N = {
     'exp.1.b2': 'Built <strong>AWS SageMaker</strong> training pipelines from scratch; team go-to for SageMaker AI, S3, EC2, EFS. Also train domain classification and end-of-sentence models for TV-subtitle pipelines.',
     'exp.1.b3': 'Lead on-device <strong>real-time generative music research</strong> using MIDI transformers; co-authored ICASSP 2025 work on latent diffusion for speech.',
 
-    'exp.2.title': 'AI Engineer (Junior)',
+    'exp.2.title': 'Junior AI Engineer',
     'exp.2.date': 'Apr 2023 — Apr 2025',
     'exp.2.b1': 'Designed and trained <strong>spoof classification</strong> models for voice authentication, reaching production-grade quality on Android benchmarks.',
     'exp.2.b2': 'Co-authored Interspeech 2024 work on <strong>LLM truthfulness</strong> (NL-ITI); experiments achieved <strong>&gt;16% relative MC1 improvement on TruthfulQA</strong> over baseline ITI.',
@@ -81,9 +78,6 @@ const I18N = {
     'ui.download': 'Pobierz',
     'ui.pdf': 'Dokument PDF',
     'ui.png': 'Obraz PNG',
-    'stat.years': 'Lata w produkcyjnym AI',
-    'stat.pubs': 'Recenzowane publikacje',
-    'stat.models': 'Wdrożone pary MT na urządzeniu',
     'pub.view': 'Zobacz publikację',
     'hero.title': 'Inżynier AI',
     'hero.subtitle': 'LLM · Mowa · Dyfuzja',
@@ -119,7 +113,7 @@ const I18N = {
     'exp.1.b2': 'Zbudowanie od podstaw potoków treningowych <strong>AWS SageMaker</strong>; osoba pierwszego kontaktu w zespole ds. SageMaker AI, S3, EC2, EFS. Trenowanie modeli klasyfikacji domen i wykrywania końca zdania dla potoków napisów telewizyjnych.',
     'exp.1.b3': 'Prowadzenie <strong>badań nad generatywną muzyką w czasie rzeczywistym</strong> na urządzeniu z użyciem transformerów MIDI; współautorstwo pracy ICASSP 2025 o dyfuzji latentnej dla mowy.',
 
-    'exp.2.title': 'Inżynier AI (Junior)',
+    'exp.2.title': 'Młodszy inżynier AI',
     'exp.2.date': 'kwi 2023 — kwi 2025',
     'exp.2.b1': 'Zaprojektowanie i wytrenowanie modeli <strong>klasyfikacji spoofingu</strong> dla uwierzytelniania głosowego, osiągających jakość produkcyjną w benchmarkach na Androidzie.',
     'exp.2.b2': 'Współautorstwo pracy Interspeech 2024 o <strong>prawdomówności LLM</strong> (NL-ITI); eksperymenty osiągnęły <strong>ponad 16% względnej poprawy MC1 na TruthfulQA</strong> względem bazowego ITI.',
@@ -214,11 +208,10 @@ function applyTheme(theme) {
 }
 
 function setupTheme() {
-  let theme = 'light';
+  let theme = 'light'; // light is the default
   try {
     const saved = localStorage.getItem('cv-theme');
-    if (saved === 'dark' || saved === 'light') theme = saved;
-    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark';
+    if (saved === 'dark' || saved === 'light') theme = saved; // honour explicit choice only
   } catch (e) {}
   applyTheme(theme);
 
@@ -233,7 +226,7 @@ function setupTheme() {
 
 /* ----------------------- Scroll reveal ----------------------- */
 function setupReveal() {
-  const els = document.querySelectorAll('.main-block, .stats');
+  const els = document.querySelectorAll('.main-block');
   if (!('IntersectionObserver' in window)) return; // leave fully visible
   els.forEach((el) => el.classList.add('reveal'));
   const io = new IntersectionObserver((entries) => {
@@ -323,9 +316,6 @@ function setupDownload() {
   const menu = document.getElementById('dlMenu');
   if (!wrap || !main || !caret || !menu) return;
 
-  const spinner = main.querySelector('.dl-spinner');
-  const label = main.querySelector('.dl-label');
-
   const openMenu = () => { menu.hidden = false; caret.setAttribute('aria-expanded', 'true'); };
   const closeMenu = () => { menu.hidden = true; caret.setAttribute('aria-expanded', 'false'); };
 
@@ -338,8 +328,6 @@ function setupDownload() {
       return;
     }
     wrap.classList.add('is-busy');
-    if (spinner) spinner.hidden = false;
-    if (label) label.textContent = '…';
     try {
       if (format === 'png') await downloadPNG();
       else await downloadPDF();
@@ -348,8 +336,6 @@ function setupDownload() {
       window.print();
     } finally {
       wrap.classList.remove('is-busy');
-      if (spinner) spinner.hidden = true;
-      applyLang(document.documentElement.lang || 'en'); // restore label text
     }
   }
 
