@@ -12,6 +12,10 @@ const I18N = {
     'nav.cv': 'Curriculum Vitae',
     'main.skills': 'Skills & Tools',
     'hero.cta': 'Download CV',
+    'hero.mt': 'Machine Translation',
+    'cta.heading': "Let's work together",
+    'cta.button': 'Email me',
+    'ui.copied': 'Copied',
     'hero.title': 'AI Engineer',
     'hero.subtitle': 'LLMs · Speech · Diffusion',
 
@@ -85,6 +89,10 @@ const I18N = {
     'nav.cv': 'Życiorys',
     'main.skills': 'Umiejętności i narzędzia',
     'hero.cta': 'Pobierz CV',
+    'hero.mt': 'Tłumaczenie maszynowe',
+    'cta.heading': 'Współpracujmy',
+    'cta.button': 'Napisz do mnie',
+    'ui.copied': 'Skopiowano',
     'hero.title': 'Inżynier AI',
     'hero.subtitle': 'LLM · Mowa · Dyfuzja',
 
@@ -202,14 +210,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupReveal();
   setupDownload();
+  setupCopyEmail();
 
   const heroBtn = document.getElementById('heroDownload');
   if (heroBtn) heroBtn.addEventListener('click', () => runDownload('pdf'));
 });
 
+/* ----------------------- Copy email ----------------------- */
+function setupCopyEmail() {
+  const btn = document.getElementById('copyEmail');
+  const pill = document.getElementById('emailPill');
+  if (!btn || !pill) return;
+  const email = (pill.querySelector('code') || {}).textContent || 'adam.cieslak333@gmail.com';
+  const icon = btn.querySelector('i');
+  btn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(email.trim());
+    } catch (e) {
+      const r = document.createRange(); r.selectNodeContents(pill.querySelector('code'));
+      const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      try { document.execCommand('copy'); } catch (_) {}
+      sel.removeAllRanges();
+    }
+    btn.classList.add('copied');
+    if (icon) icon.className = 'fa-solid fa-check';
+    const lang = document.documentElement.lang || 'en';
+    btn.setAttribute('aria-label', (I18N[lang] && I18N[lang]['ui.copied']) || 'Copied');
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      if (icon) icon.className = 'fa-regular fa-copy';
+      btn.setAttribute('aria-label', 'Copy email');
+    }, 1600);
+  });
+}
+
 /* ----------------------- Scroll reveal ----------------------- */
 function setupReveal() {
-  const els = document.querySelectorAll('.tile');
+  const els = document.querySelectorAll('.block');
   if (!('IntersectionObserver' in window)) return; // leave fully visible
   els.forEach((el) => el.classList.add('reveal'));
   const io = new IntersectionObserver((entries) => {

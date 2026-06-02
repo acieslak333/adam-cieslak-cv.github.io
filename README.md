@@ -5,14 +5,14 @@ A responsive, bilingual (English / Polish) online CV, deployable on GitHub Pages
 🔗 **Live site:** https://acieslak333.github.io/adam-cieslak-cv.github.io/
 
 ## Features
-- 🍏 Apple-inspired design language — full-bleed alternating light/dark "tiles", tight display typography, two-row frosted nav, pill CTAs
+- 📄 Ollama-inspired design language — one continuous paper-white sheet, single 720px reading column, pill geometry everywhere, hairline cards
 - 🌿 Single **sage-green** accent carries every interactive element
-- 📱 Fully responsive — single-column tiles, collapsing sub-nav
+- ⌨️ Signature install-snippet pill (copy-to-clipboard email) + a terminal mockup "preview"
+- 🟢 One inverted surface (dark sage CTA strip) used exactly once, as the "look here" moment
 - 🌐 Language switch (EN / PL) with preference saved in the browser
-- ⬇️ Download button — export as **PDF** (default) or **PNG**; the hero CTA also downloads the PDF. Exports render as a clean ink-on-white version
-- 🔗 Clickable publication links + rich social-preview cards (Open Graph / Twitter) + favicon + `schema.org/Person` structured data
-- ✨ Subtle scroll-reveal on tiles (respects `prefers-reduced-motion`)
-- 🖨️ Print stylesheet flattens dark tiles to ink-on-white
+- ⬇️ Download button — export as **PDF** (default) or **PNG**; the hero CTA also downloads the PDF. Exports/print render as a clean document (web-only flourishes hidden)
+- 🔗 Clickable publication links + social-preview card (Open Graph / Twitter) + favicon + `schema.org/Person` structured data
+- ✨ Subtle scroll-reveal (respects `prefers-reduced-motion`)
 
 ## Files
 - `index.html` — page structure and content

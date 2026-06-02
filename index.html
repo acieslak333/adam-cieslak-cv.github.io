@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Adam Cieślak — AI Engineer at Samsung R&D Poland. LLMs, speech processing, diffusion and on-device machine translation. Co-author of 3 peer-reviewed papers (Interspeech ×2, ICASSP)." />
   <meta name="author" content="Adam Cieślak" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Adam Cieślak — AI Engineer · CV</title>
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -49,238 +49,266 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- ============== GLOBAL NAV (slim black bar) ============== -->
-  <header class="global-nav">
-    <span class="gnav-name">CV</span>
-    <div class="gnav-actions">
-      <div class="lang-switch" role="group" aria-label="Language selector">
-        <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" class="lang-btn" data-lang="pl" aria-pressed="false">PL</button>
-      </div>
-      <div class="download" id="downloadMenu">
-        <button type="button" class="dl-btn" id="dlMain" title="Download CV as PDF">
-          <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i>
-          <span class="dl-label" data-i18n="ui.download">Download</span>
-        </button>
-        <button type="button" class="dl-caret" id="dlCaret" aria-haspopup="true" aria-expanded="false" aria-label="Download format options">
-          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-        </button>
-        <ul class="dl-menu" id="dlMenu" role="menu" hidden>
-          <li role="none"><button type="button" role="menuitem" data-format="pdf"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> <span data-i18n="ui.pdf">PDF document</span></button></li>
-          <li role="none"><button type="button" role="menuitem" data-format="png"><i class="fa-solid fa-file-image" aria-hidden="true"></i> <span data-i18n="ui.png">PNG image</span></button></li>
-        </ul>
+  <!-- ===================== NAV ===================== -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-name">Adam Cieślak</a>
+      <nav class="nav-links">
+        <a href="#summary" data-i18n="main.summary">Summary</a>
+        <a href="#experience" data-i18n="main.experience">Experience</a>
+        <a href="#publications" data-i18n="main.publications">Publications</a>
+        <a href="#skills" data-i18n="main.skills">Skills</a>
+        <a href="#education" data-i18n="main.education">Education</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" aria-label="Language selector">
+          <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-btn" data-lang="pl" aria-pressed="false">PL</button>
+        </div>
+        <div class="download" id="downloadMenu">
+          <button type="button" class="btn btn-primary dl-btn" id="dlMain" title="Download CV as PDF">
+            <span class="dl-label" data-i18n="ui.download">Download</span>
+          </button>
+          <button type="button" class="btn btn-primary dl-caret" id="dlCaret" aria-haspopup="true" aria-expanded="false" aria-label="Download format options">
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul class="dl-menu" id="dlMenu" role="menu" hidden>
+            <li role="none"><button type="button" role="menuitem" data-format="pdf"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> <span data-i18n="ui.pdf">PDF document</span></button></li>
+            <li role="none"><button type="button" role="menuitem" data-format="png"><i class="fa-solid fa-file-image" aria-hidden="true"></i> <span data-i18n="ui.png">PNG image</span></button></li>
+          </ul>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- ============== SUB NAV (frosted parchment) ============== -->
-  <nav class="sub-nav">
-    <span class="subnav-brand">
-      <span class="subnav-title">Adam Cieślak</span>
-      <span class="subnav-role" data-i18n="hero.title">AI Engineer</span>
-    </span>
-    <div class="subnav-links">
-      <a href="#summary" data-i18n="main.summary">Summary</a>
-      <a href="#experience" data-i18n="main.experience">Experience</a>
-      <a href="#publications" data-i18n="main.publications">Publications</a>
-      <a href="#skills" data-i18n="main.skills">Skills</a>
-      <a href="#education" data-i18n="main.education">Education</a>
-    </div>
-  </nav>
-
   <main class="cv" id="cv">
-    <!-- ============== SUMMARY (white) ============== -->
-    <section class="tile tile-light" id="summary">
-      <div class="tile-inner narrow center">
-        <h2 class="display-lg" data-i18n="main.summary">Summary</h2>
-        <p class="lead-body" data-i18n="summary.text" data-i18n-html>
-          AI Engineer with 4+ years at Samsung R&amp;D Poland delivering production AI in <strong>machine translation (MT)</strong>, <strong>speech processing</strong>, <strong>large language models (LLMs)</strong>, and <strong>generative diffusion</strong>. Co-author of three peer-reviewed publications (<strong>Interspeech</strong> ×2, <strong>ICASSP</strong>). End-to-end ownership of on-device deep learning models shipped to Samsung products. Hands-on with <strong>Llama</strong> fine-tuning, <strong>LoRA</strong>, <strong>RAG</strong>, <strong>Conformer</strong> ASR, and <strong>AWS</strong> MLOps (SageMaker, Kubeflow).
-        </p>
-        <div class="cta-row">
-          <button type="button" class="pill pill-primary" id="heroDownload" data-i18n="hero.cta">Download CV</button>
-          <a class="pill pill-ghost" href="https://www.linkedin.com/in/adam-cie%C5%9Blak-432765262/" target="_blank" rel="noopener">LinkedIn</a>
+    <span id="top"></span>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <h1 class="display-xl">Adam Cieślak</h1>
+      <p class="hero-sub"><span data-i18n="hero.title">AI Engineer</span> · LLMs · Speech · Diffusion · <span data-i18n="hero.mt">Machine Translation</span></p>
+
+      <div class="install-snippet" id="emailPill">
+        <span class="snippet-prompt" aria-hidden="true">$</span>
+        <code>adam.cieslak333@gmail.com</code>
+        <button type="button" class="copy-btn" id="copyEmail" aria-label="Copy email">
+          <i class="fa-regular fa-copy" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="cta-row">
+        <button type="button" class="btn btn-primary btn-lg" id="heroDownload" data-i18n="hero.cta">Download CV</button>
+        <a class="btn btn-secondary btn-lg" href="https://www.linkedin.com/in/adam-cie%C5%9Blak-432765262/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <p class="contact-meta">
+        <span data-i18n="contact.location">Cracow, Poland</span>
+        <span class="dot">·</span><a href="tel:+48508910123">+48 508 910 123</a>
+        <span class="dot">·</span><a href="https://github.com/acieslak333" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </section>
+
+    <!-- ===================== TERMINAL ===================== -->
+    <section class="terminal-wrap" aria-hidden="true">
+      <div class="terminal-card">
+        <div class="traffic"><span class="tl red"></span><span class="tl yellow"></span><span class="tl green"></span></div>
+        <pre class="term-body"><span class="c-prompt">adam@samsung</span> <span class="c-path">~</span> % whoami
+<span class="c-out">Adam Cieślak — AI Engineer @ Samsung R&amp;D Poland</span>
+
+<span class="c-prompt">adam@samsung</span> <span class="c-path">~</span> % cat focus.txt
+<span class="c-out">LLMs · Speech · Diffusion · Machine Translation</span>
+
+<span class="c-prompt">adam@samsung</span> <span class="c-path">~</span> % ollama list
+<span class="c-comment"># NAME             SPECIALTY</span>
+<span class="c-out">llama-7b/13b       fine-tuning · LoRA · RAG</span>
+<span class="c-out">conformer-asr      speech recognition</span>
+<span class="c-out">latent-diffusion   speech enhancement</span></pre>
+      </div>
+    </section>
+
+    <!-- ===================== SUMMARY ===================== -->
+    <section class="block" id="summary">
+      <h2 class="display-lg" data-i18n="main.summary">Summary</h2>
+      <p class="body-md" data-i18n="summary.text" data-i18n-html>
+        AI Engineer with 4+ years at Samsung R&amp;D Poland delivering production AI in <strong>machine translation (MT)</strong>, <strong>speech processing</strong>, <strong>large language models (LLMs)</strong>, and <strong>generative diffusion</strong>. Co-author of three peer-reviewed publications (<strong>Interspeech</strong> ×2, <strong>ICASSP</strong>). End-to-end ownership of on-device deep learning models shipped to Samsung products. Hands-on with <strong>Llama</strong> fine-tuning, <strong>LoRA</strong>, <strong>RAG</strong>, <strong>Conformer</strong> ASR, and <strong>AWS</strong> MLOps (SageMaker, Kubeflow).
+      </p>
+    </section>
+
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section class="block" id="experience">
+      <h2 class="display-lg" data-i18n="main.experience">Experience</h2>
+
+      <article class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title" data-i18n="exp.1.title">AI Engineer</h3>
+          <span class="entry-date" data-i18n="exp.1.date">Apr 2025 — Present</span>
+        </div>
+        <p class="entry-org">Samsung R&amp;D Institute Poland · <span data-i18n="contact.location">Cracow, Poland</span></p>
+        <ul class="bullets">
+          <li data-i18n="exp.1.b1" data-i18n-html>Own end-to-end lifecycle of on-device <strong>Machine Translation</strong> models (3 language pairs, sub-1B params) shipped to Samsung products.</li>
+          <li data-i18n="exp.1.b2" data-i18n-html>Built <strong>AWS SageMaker</strong> training pipelines from scratch; team go-to for SageMaker AI, S3, EC2, EFS. Also train domain classification and end-of-sentence models for TV-subtitle pipelines.</li>
+          <li data-i18n="exp.1.b3" data-i18n-html>Lead on-device <strong>real-time generative music research</strong> using MIDI transformers; co-authored ICASSP 2025 work on latent diffusion for speech.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title" data-i18n="exp.2.title">Junior AI Engineer</h3>
+          <span class="entry-date" data-i18n="exp.2.date">Apr 2023 — Apr 2025</span>
+        </div>
+        <p class="entry-org">Samsung R&amp;D Institute Poland · <span data-i18n="contact.location">Cracow, Poland</span></p>
+        <ul class="bullets">
+          <li data-i18n="exp.2.b1" data-i18n-html>Designed and trained <strong>spoof classification</strong> models for voice authentication, reaching production-grade quality on Android benchmarks.</li>
+          <li data-i18n="exp.2.b2" data-i18n-html>Co-authored Interspeech 2024 work on <strong>LLM truthfulness</strong> (NL-ITI); experiments achieved <strong>&gt;16% relative MC1 improvement on TruthfulQA</strong> over baseline ITI.</li>
+          <li data-i18n="exp.2.b3" data-i18n-html>Fine-tuned 7B/13B <strong>Llama-family LLMs</strong> with <strong>LoRA</strong> (Low-Rank Adaptation) and <strong>RAG</strong> (Retrieval-Augmented Generation) for internal AI assistant demos; built and maintained <strong>AWS Kubeflow</strong> training pipelines.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title" data-i18n="exp.3.title">AI Research Intern — Voice Intelligence</h3>
+          <span class="entry-date" data-i18n="exp.3.date">Jul 2022 — Apr 2023</span>
+        </div>
+        <p class="entry-org">Samsung R&amp;D Institute Poland · <span data-i18n="contact.location">Cracow, Poland</span></p>
+        <ul class="bullets">
+          <li data-i18n="exp.3.b1" data-i18n-html>Trained Voice Command Classification and <strong>Conformer-based</strong> Automatic Speech Recognition (ASR) systems; co-authored Interspeech 2023 publication preparing the multilingual <strong>MOCKS testset</strong> (~50,000 keywords, 5 languages).</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title" data-i18n="exp.4.title">MRI Image Correction Developer</h3>
+          <span class="entry-date" data-i18n="exp.4.date">Jul 2021 — Dec 2021</span>
+        </div>
+        <p class="entry-org">ONWELO · <span data-i18n="contact.location">Cracow, Poland</span></p>
+        <p class="body-md" data-i18n="exp.4.desc">Built Python pipeline for medical DICOM processing; ML and matrix-algebra routines for medical image correction.</p>
+      </article>
+    </section>
+
+    <!-- ===================== PUBLICATIONS ===================== -->
+    <section class="block" id="publications">
+      <h2 class="display-lg" data-i18n="main.publications">Publications</h2>
+
+      <article class="entry">
+        <p class="pub-head"><span class="pub-title">LAFUFU: Latent Acoustic Features for Ultra-Fast Utterance Restoration</span> <span class="pub-venue">— ICASSP 2025</span></p>
+        <p class="pub-authors">Łazarz, R., Wosik, M., Pudo, M., Krywalska, U., <strong>Cieślak, A.</strong> <span data-i18n="pub.1.desc">— Latent-space diffusion for speech enhancement; multifold inference-speed gains on EARS-WHAM/EARS-Reverb.</span></p>
+        <p class="pub-contrib"><span data-i18n="pub.contrib">My contribution:</span> <span data-i18n="pub.1.contrib">implementation, experiments, paper review.</span></p>
+        <a class="link-inline" href="https://ieeexplore.ieee.org/document/11460812" target="_blank" rel="noopener"><span data-i18n="pub.view">View paper</span> →</a>
+      </article>
+
+      <article class="entry">
+        <p class="pub-head"><span class="pub-title">Non-Linear Inference Time Intervention: Improving LLM Truthfulness</span> <span class="pub-venue">— Interspeech 2024</span></p>
+        <p class="pub-authors">Hościłowicz, J., Wiącek, A., Chojnacki, J., <strong>Cieślak, A.</strong>, Michoń, L., Janicki, A. <span data-i18n="pub.2.desc">— Non-linear probing on LLM attention heads; &gt;16% MC1 on TruthfulQA over baseline ITI without fine-tuning.</span></p>
+        <p class="pub-contrib"><span data-i18n="pub.contrib">My contribution:</span> <span data-i18n="pub.2.contrib">experiments, paper preparation and review.</span></p>
+        <a class="link-inline" href="https://arxiv.org/abs/2403.18680" target="_blank" rel="noopener"><span data-i18n="pub.view">View paper</span> →</a>
+      </article>
+
+      <article class="entry">
+        <p class="pub-head"><span class="pub-title">MOCKS 1.0: Multilingual Open Custom Keyword Spotting Testset</span> <span class="pub-venue">— Interspeech 2023</span></p>
+        <p class="pub-authors">Pudo, M., Wosik, M., <strong>Cieślak, A.</strong>, Krzywdziak, J., Łukasiak, B., Janicki, A. <span data-i18n="pub.3.desc">— Public testset, ~50,000 keywords, 5 languages.</span></p>
+        <p class="pub-contrib"><span data-i18n="pub.contrib">My contribution:</span> <span data-i18n="pub.3.contrib">dataset preparation and processing scripts.</span></p>
+        <a class="link-inline" href="https://research.samsung.com/research-papers/MOCKS-1-0-Multilingual-Open-Custom-Keyword-Spotting-Testset" target="_blank" rel="noopener"><span data-i18n="pub.view">View paper</span> →</a>
+      </article>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
+    <section class="block" id="skills">
+      <h2 class="display-lg" data-i18n="main.skills">Skills &amp; Tools</h2>
+
+      <div class="skill-group">
+        <p class="skill-label" data-i18n="sidebar.programming">Programming</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Bash</span><span class="tag">Git</span><span class="tag">Linux</span><span class="tag">Docker</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-label" data-i18n="sidebar.aiml">AI / Machine Learning</p>
+        <div class="tags">
+          <span class="tag">LLMs (Llama 7B/13B)</span><span class="tag">LoRA</span><span class="tag">PEFT</span><span class="tag">RAG</span><span class="tag">Fine-tuning</span><span class="tag">Diffusion</span><span class="tag">Transformers</span><span class="tag">Machine Translation</span><span class="tag">ASR (Conformer)</span><span class="tag">Speech Enhancement</span><span class="tag">Generative Music (MIDI)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-label" data-i18n="sidebar.frameworks">Frameworks</p>
+        <div class="tags">
+          <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Hugging Face</span><span class="tag">torchaudio</span><span class="tag">librosa</span><span class="tag">Fairseq</span><span class="tag">Marian</span><span class="tag">NLLB</span><span class="tag">Magenta</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-label" data-i18n="sidebar.cloud">Cloud &amp; MLOps</p>
+        <div class="tags">
+          <span class="tag">AWS (SageMaker, S3, EC2, EFS, Bedrock)</span><span class="tag">Kubeflow</span><span class="tag">MLflow</span><span class="tag">TensorBoard</span><span class="tag">Multi-GPU (CUDA)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-label" data-i18n="sidebar.ondevice">On-Device</p>
+        <div class="tags">
+          <span class="tag">ONNX</span><span class="tag">TFLite</span><span class="tag">Android inference</span>
         </div>
       </div>
     </section>
 
-    <!-- ============== EXPERIENCE (dark) ============== -->
-    <section class="tile tile-dark" id="experience">
-      <div class="tile-inner">
-        <h2 class="display-lg center" data-i18n="main.experience">Experience</h2>
-        <div class="stack">
-          <article class="role">
-            <div class="role-head">
-              <h3 class="role-title" data-i18n="exp.1.title">AI Engineer</h3>
-              <span class="role-date" data-i18n="exp.1.date">Apr 2025 — Present</span>
-            </div>
-            <div class="role-sub"><span class="role-org">Samsung R&amp;D Institute Poland</span> · <span data-i18n="contact.location">Cracow, Poland</span></div>
-            <ul class="bullets">
-              <li data-i18n="exp.1.b1" data-i18n-html>Own end-to-end lifecycle of on-device <strong>Machine Translation</strong> models (3 language pairs, sub-1B params) shipped to Samsung products.</li>
-              <li data-i18n="exp.1.b2" data-i18n-html>Built <strong>AWS SageMaker</strong> training pipelines from scratch; team go-to for SageMaker AI, S3, EC2, EFS. Also train domain classification and end-of-sentence models for TV-subtitle pipelines.</li>
-              <li data-i18n="exp.1.b3" data-i18n-html>Lead on-device <strong>real-time generative music research</strong> using MIDI transformers; co-authored ICASSP 2025 work on latent diffusion for speech.</li>
-            </ul>
-          </article>
+    <!-- ===================== EDUCATION & MORE ===================== -->
+    <section class="block" id="education">
+      <h2 class="display-lg" data-i18n="main.education">Education</h2>
 
-          <article class="role">
-            <div class="role-head">
-              <h3 class="role-title" data-i18n="exp.2.title">Junior AI Engineer</h3>
-              <span class="role-date" data-i18n="exp.2.date">Apr 2023 — Apr 2025</span>
-            </div>
-            <div class="role-sub"><span class="role-org">Samsung R&amp;D Institute Poland</span> · <span data-i18n="contact.location">Cracow, Poland</span></div>
-            <ul class="bullets">
-              <li data-i18n="exp.2.b1" data-i18n-html>Designed and trained <strong>spoof classification</strong> models for voice authentication, reaching production-grade quality on Android benchmarks.</li>
-              <li data-i18n="exp.2.b2" data-i18n-html>Co-authored Interspeech 2024 work on <strong>LLM truthfulness</strong> (NL-ITI); experiments achieved <strong>&gt;16% relative MC1 improvement on TruthfulQA</strong> over baseline ITI.</li>
-              <li data-i18n="exp.2.b3" data-i18n-html>Fine-tuned 7B/13B <strong>Llama-family LLMs</strong> with <strong>LoRA</strong> (Low-Rank Adaptation) and <strong>RAG</strong> (Retrieval-Augmented Generation) for internal AI assistant demos; built and maintained <strong>AWS Kubeflow</strong> training pipelines.</li>
-            </ul>
-          </article>
-
-          <article class="role">
-            <div class="role-head">
-              <h3 class="role-title" data-i18n="exp.3.title">AI Research Intern — Voice Intelligence</h3>
-              <span class="role-date" data-i18n="exp.3.date">Jul 2022 — Apr 2023</span>
-            </div>
-            <div class="role-sub"><span class="role-org">Samsung R&amp;D Institute Poland</span> · <span data-i18n="contact.location">Cracow, Poland</span></div>
-            <ul class="bullets">
-              <li data-i18n="exp.3.b1" data-i18n-html>Trained Voice Command Classification and <strong>Conformer-based</strong> Automatic Speech Recognition (ASR) systems; co-authored Interspeech 2023 publication preparing the multilingual <strong>MOCKS testset</strong> (~50,000 keywords, 5 languages).</li>
-            </ul>
-          </article>
-
-          <article class="role">
-            <div class="role-head">
-              <h3 class="role-title" data-i18n="exp.4.title">MRI Image Correction Developer</h3>
-              <span class="role-date" data-i18n="exp.4.date">Jul 2021 — Dec 2021</span>
-            </div>
-            <div class="role-sub"><span class="role-org">ONWELO</span> · <span data-i18n="contact.location">Cracow, Poland</span></div>
-            <p class="role-desc" data-i18n="exp.4.desc">Built Python pipeline for medical DICOM processing; ML and matrix-algebra routines for medical image correction.</p>
-          </article>
+      <article class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title" data-i18n="edu.1.degree">M.Sc. Artificial Intelligence &amp; Data Analysis</h3>
+          <span class="entry-date">2022 — 2023</span>
         </div>
-      </div>
-    </section>
-
-    <!-- ============== PUBLICATIONS (parchment) ============== -->
-    <section class="tile tile-parchment" id="publications">
-      <div class="tile-inner">
-        <h2 class="display-lg center" data-i18n="main.publications">Publications</h2>
-        <div class="stack">
-          <article class="pub">
-            <p class="pub-head"><span class="pub-title">LAFUFU: Latent Acoustic Features for Ultra-Fast Utterance Restoration</span> <span class="pub-venue">— ICASSP 2025</span></p>
-            <p class="pub-authors">Łazarz, R., Wosik, M., Pudo, M., Krywalska, U., <strong>Cieślak, A.</strong> <span data-i18n="pub.1.desc">— Latent-space diffusion for speech enhancement; multifold inference-speed gains on EARS-WHAM/EARS-Reverb.</span></p>
-            <p class="pub-contrib"><em><span data-i18n="pub.contrib">My contribution:</span> <span data-i18n="pub.1.contrib">implementation, experiments, paper review.</span></em></p>
-            <a class="text-link" href="https://ieeexplore.ieee.org/document/11460812" target="_blank" rel="noopener"><span data-i18n="pub.view">View paper</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </article>
-
-          <article class="pub">
-            <p class="pub-head"><span class="pub-title">Non-Linear Inference Time Intervention: Improving LLM Truthfulness</span> <span class="pub-venue">— Interspeech 2024</span></p>
-            <p class="pub-authors">Hościłowicz, J., Wiącek, A., Chojnacki, J., <strong>Cieślak, A.</strong>, Michoń, L., Janicki, A. <span data-i18n="pub.2.desc">— Non-linear probing on LLM attention heads; &gt;16% MC1 on TruthfulQA over baseline ITI without fine-tuning.</span></p>
-            <p class="pub-contrib"><em><span data-i18n="pub.contrib">My contribution:</span> <span data-i18n="pub.2.contrib">experiments, paper preparation and review.</span></em></p>
-            <a class="text-link" href="https://arxiv.org/abs/2403.18680" target="_blank" rel="noopener"><span data-i18n="pub.view">View paper</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </article>
-
-          <article class="pub">
-            <p class="pub-head"><span class="pub-title">MOCKS 1.0: Multilingual Open Custom Keyword Spotting Testset</span> <span class="pub-venue">— Interspeech 2023</span></p>
-            <p class="pub-authors">Pudo, M., Wosik, M., <strong>Cieślak, A.</strong>, Krzywdziak, J., Łukasiak, B., Janicki, A. <span data-i18n="pub.3.desc">— Public testset, ~50,000 keywords, 5 languages.</span></p>
-            <p class="pub-contrib"><em><span data-i18n="pub.contrib">My contribution:</span> <span data-i18n="pub.3.contrib">dataset preparation and processing scripts.</span></em></p>
-            <a class="text-link" href="https://research.samsung.com/research-papers/MOCKS-1-0-Multilingual-Open-Custom-Keyword-Spotting-Testset" target="_blank" rel="noopener"><span data-i18n="pub.view">View paper</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </article>
+        <div class="entry-head">
+          <h3 class="entry-title" data-i18n="edu.2.degree">B.Eng. Biomedical Engineering</h3>
+          <span class="entry-date">2018 — 2022</span>
         </div>
-      </div>
-    </section>
+        <p class="entry-org" data-i18n="edu.school">AGH University of Science and Technology, Kraków</p>
+      </article>
 
-    <!-- ============== SKILLS (dark) ============== -->
-    <section class="tile tile-dark tile-dark-2" id="skills">
-      <div class="tile-inner">
-        <h2 class="display-lg center" data-i18n="main.skills">Skills &amp; Tools</h2>
-        <div class="skill-grid">
-          <div class="skill-group">
-            <h3 class="skill-label" data-i18n="sidebar.programming">Programming</h3>
-            <p>Python · Bash · Git · Linux · Docker</p>
-          </div>
-          <div class="skill-group">
-            <h3 class="skill-label" data-i18n="sidebar.aiml">AI / Machine Learning</h3>
-            <p>LLMs (Llama 7B/13B) · LoRA · PEFT · RAG · Fine-tuning · Diffusion · Transformers · Machine Translation · ASR (Conformer) · Speech Enhancement · Generative Music (MIDI)</p>
-          </div>
-          <div class="skill-group">
-            <h3 class="skill-label" data-i18n="sidebar.frameworks">Frameworks</h3>
-            <p>PyTorch · TensorFlow · Hugging Face · torchaudio · librosa · Fairseq · Marian · NLLB · Magenta</p>
-          </div>
-          <div class="skill-group">
-            <h3 class="skill-label" data-i18n="sidebar.cloud">Cloud &amp; MLOps</h3>
-            <p>AWS (SageMaker, S3, EC2, EFS, Bedrock) · Kubeflow · MLflow · TensorBoard · Multi-GPU (CUDA)</p>
-          </div>
-          <div class="skill-group">
-            <h3 class="skill-label" data-i18n="sidebar.ondevice">On-Device</h3>
-            <p>ONNX · TFLite · Android inference</p>
-          </div>
-          <div class="skill-group">
-            <h3 class="skill-label" data-i18n="sidebar.certifications">Certifications</h3>
-            <p data-i18n="cert.nvidia">NVIDIA DeepStream — Object Detection &amp; Tracking on Video Streams</p>
-          </div>
+      <div class="mini-grid">
+        <div class="mini">
+          <p class="skill-label" data-i18n="sidebar.languages">Languages</p>
+          <ul class="plain-list">
+            <li><strong data-i18n="lang.english">English</strong> <span data-i18n="lang.english.lvl">C1</span></li>
+            <li><strong data-i18n="lang.polish">Polish</strong> <span data-i18n="lang.polish.lvl">Native</span></li>
+            <li><strong data-i18n="lang.japanese">Japanese</strong></li>
+            <li><strong data-i18n="lang.chinese">Chinese</strong> <span data-i18n="lang.chinese.lvl">(beginner)</span></li>
+          </ul>
         </div>
-      </div>
-    </section>
-
-    <!-- ============== EDUCATION & MORE (white, utility cards) ============== -->
-    <section class="tile tile-light" id="education">
-      <div class="tile-inner">
-        <h2 class="display-lg center" data-i18n="main.education">Education</h2>
-        <div class="card-grid">
-          <div class="ucard">
-            <h3 class="ucard-title" data-i18n="main.education">Education</h3>
-            <div class="edu-row"><span class="edu-degree" data-i18n="edu.1.degree">M.Sc. Artificial Intelligence &amp; Data Analysis</span><span class="edu-date">2022 — 2023</span></div>
-            <div class="edu-row"><span class="edu-degree" data-i18n="edu.2.degree">B.Eng. Biomedical Engineering</span><span class="edu-date">2018 — 2022</span></div>
-            <p class="ucard-note" data-i18n="edu.school">AGH University of Science and Technology, Kraków</p>
-          </div>
-          <div class="ucard">
-            <h3 class="ucard-title" data-i18n="sidebar.languages">Languages</h3>
-            <ul class="plain-list">
-              <li><strong data-i18n="lang.english">English</strong> <span data-i18n="lang.english.lvl">C1</span></li>
-              <li><strong data-i18n="lang.polish">Polish</strong> <span data-i18n="lang.polish.lvl">Native</span></li>
-              <li><strong data-i18n="lang.japanese">Japanese</strong></li>
-              <li><strong data-i18n="lang.chinese">Chinese</strong> <span data-i18n="lang.chinese.lvl">(beginner)</span></li>
-            </ul>
-          </div>
-          <div class="ucard">
-            <h3 class="ucard-title" data-i18n="sidebar.volunteering">Volunteering</h3>
-            <p class="ucard-note" data-i18n="volunteering.text">Neurodiversity ERG @ Samsung · English tutor @ Anioły Wiedzy · Mentor @ Akademia Przyszłości</p>
-          </div>
+        <div class="mini">
+          <p class="skill-label" data-i18n="sidebar.certifications">Certifications</p>
+          <p class="body-sm" data-i18n="cert.nvidia">NVIDIA DeepStream — Object Detection &amp; Tracking on Video Streams</p>
+        </div>
+        <div class="mini">
+          <p class="skill-label" data-i18n="sidebar.volunteering">Volunteering</p>
+          <p class="body-sm" data-i18n="volunteering.text">Neurodiversity ERG @ Samsung · English tutor @ Anioły Wiedzy · Mentor @ Akademia Przyszłości</p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ============== FOOTER (parchment, dense) ============== -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4 class="footer-head" data-i18n="sidebar.contact">Contact</h4>
-          <ul>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <span data-i18n="contact.location">Cracow, Poland</span></li>
-            <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+48508910123">+48 508 910 123</a></li>
-            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:adam.cieslak333@gmail.com">adam.cieslak333@gmail.com</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-head">Online</h4>
-          <ul>
-            <li><i class="fa-brands fa-linkedin" aria-hidden="true"></i> <a href="https://www.linkedin.com/in/adam-cie%C5%9Blak-432765262/" target="_blank" rel="noopener">linkedin.com/in/adam-cieślak</a></li>
-            <li><i class="fa-brands fa-github" aria-hidden="true"></i> <a href="https://github.com/acieslak333" target="_blank" rel="noopener">github.com/acieslak333</a></li>
-          </ul>
-        </div>
-        <div class="footer-col footer-col-wide">
-          <details class="consent">
-            <summary data-i18n="consent.heading">Data Processing Consent</summary>
-            <p class="consent-text" data-i18n="consent.text">I agree to the processing of personal data provided in this document for realising the recruitment process pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation).</p>
-          </details>
-        </div>
-      </div>
-      <div class="footer-legal">© <span id="year"></span> Adam Cieślak</div>
+  <!-- ===================== CTA STRIP (single inverted surface) ===================== -->
+  <section class="cta-strip">
+    <div class="cta-strip-inner">
+      <h2 class="heading-lg" data-i18n="cta.heading">Let's work together</h2>
+      <a class="btn btn-on-dark btn-lg" href="mailto:adam.cieslak333@gmail.com" data-i18n="cta.button">Email me</a>
     </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="mailto:adam.cieslak333@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/adam-cie%C5%9Blak-432765262/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/acieslak333" target="_blank" rel="noopener">GitHub</a>
+      <a href="tel:+48508910123">Phone</a>
+      <details class="consent"><summary data-i18n="consent.heading">Data Processing Consent</summary><p class="consent-text" data-i18n="consent.text">I agree to the processing of personal data provided in this document for realising the recruitment process pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation).</p></details>
+    </div>
+    <div class="footer-copy">© <span id="year"></span> Adam Cieślak</div>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
