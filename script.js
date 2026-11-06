@@ -13,7 +13,7 @@ const I18N = {
     'main.skills': 'Skills & Tools',
     'hero.cta': 'Download CV',
     'hero.title': 'AI Engineer',
-    'hero.subtitle': 'LLMs · Speech · Diffusion',
+    'hero.subtitle': 'LLMs · AI Agents · Speech',
 
     'sidebar.contact': 'Contact',
     'sidebar.programming': 'Programming',
@@ -38,13 +38,18 @@ const I18N = {
     'main.publications': 'Publications',
     'main.education': 'Education',
 
-    'summary.text': 'AI Engineer with 4+ years at Samsung R&D Poland delivering production AI in <strong>machine translation (MT)</strong>, <strong>speech processing</strong>, <strong>large language models (LLMs)</strong>, and <strong>generative diffusion</strong>. Co-author of three peer-reviewed publications (<strong>Interspeech</strong> ×2, <strong>ICASSP</strong>). End-to-end ownership of on-device deep learning models shipped to Samsung products. Hands-on with <strong>Llama</strong> fine-tuning, <strong>LoRA</strong>, <strong>RAG</strong>, <strong>Conformer</strong> ASR, and <strong>AWS</strong> MLOps (SageMaker, Kubeflow).',
+    'summary.text': 'AI Engineer at <strong>IBM</strong> working with <strong>large language models (LLMs)</strong> on conversation analysis, language tasks and solutions for <strong>AI coding agents</strong>, and <strong>PhD candidate</strong> in Biomedical Engineering at AGH (speech processing). Previously 4+ years at Samsung R&D Poland delivering production AI in <strong>machine translation (MT)</strong>, <strong>speech processing</strong>, LLMs and <strong>generative diffusion</strong>. Co-author of three peer-reviewed publications (<strong>Interspeech</strong> ×2, <strong>ICASSP</strong>). Hands-on with <strong>Llama</strong> fine-tuning, <strong>LoRA</strong>, <strong>RAG</strong>, <strong>Conformer</strong> ASR, and <strong>AWS</strong> MLOps (SageMaker, Kubeflow).',
+
+    'exp.0.title': 'AI Engineer',
+    'exp.0.date': 'Sep 2026 — Present',
+    'exp.0.b1': 'Work with <strong>large language models (LLMs)</strong> to analyse conversations and solve natural-language tasks.',
+    'exp.0.b2': 'Propose and prototype solutions for <strong>AI coding agents</strong>.',
 
     'exp.1.title': 'AI Engineer',
-    'exp.1.date': 'Apr 2025 — Present',
-    'exp.1.b1': 'Own end-to-end lifecycle of on-device <strong>Machine Translation</strong> models (3 language pairs, sub-1B params) shipped to Samsung products.',
-    'exp.1.b2': 'Built <strong>AWS SageMaker</strong> training pipelines from scratch; team go-to for SageMaker AI, S3, EC2, EFS. Also train domain classification and end-of-sentence models for TV-subtitle pipelines.',
-    'exp.1.b3': 'Lead on-device <strong>real-time generative music research</strong> using MIDI transformers; co-authored ICASSP 2025 work on latent diffusion for speech.',
+    'exp.1.date': 'Apr 2025 — Aug 2026',
+    'exp.1.b1': 'Owned end-to-end lifecycle of on-device <strong>Machine Translation</strong> models (3 language pairs, sub-1B params) shipped to Samsung products.',
+    'exp.1.b2': 'Built <strong>AWS SageMaker</strong> training pipelines from scratch; team go-to for SageMaker AI, S3, EC2, EFS. Also trained domain classification and end-of-sentence models for TV-subtitle pipelines.',
+    'exp.1.b3': 'Led on-device <strong>real-time generative music research</strong> using MIDI transformers; co-authored ICASSP 2025 work on latent diffusion for speech.',
 
     'exp.2.title': 'Junior AI Engineer',
     'exp.2.date': 'Apr 2023 — Apr 2025',
@@ -68,9 +73,12 @@ const I18N = {
     'pub.3.desc': '— Public testset, ~50,000 keywords, 5 languages.',
     'pub.3.contrib': 'dataset preparation and processing scripts.',
 
+    'edu.0.degree': 'Ph.D. candidate, Biomedical Engineering',
+    'edu.0.date': '2026 — Present',
+    'edu.0.note': 'Faculty of Electrical Engineering, Automatics, Computer Science and Biomedical Engineering (EAIiIB) · Research: speech processing',
     'edu.1.degree': 'M.Sc. Artificial Intelligence & Data Analysis',
     'edu.2.degree': 'B.Eng. Biomedical Engineering',
-    'edu.school': 'AGH University of Science and Technology, Kraków',
+    'edu.school': 'AGH University of Krakow (formerly AGH University of Science and Technology)',
 
     'consent.heading': 'Data Processing Consent',
     'consent.text': 'I agree to the processing of personal data provided in this document for realising the recruitment process pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation).'
@@ -86,7 +94,7 @@ const I18N = {
     'main.skills': 'Umiejętności i narzędzia',
     'hero.cta': 'Pobierz CV',
     'hero.title': 'Inżynier AI',
-    'hero.subtitle': 'LLM · Mowa · Dyfuzja',
+    'hero.subtitle': 'LLM · Agenci AI · Mowa',
 
     'sidebar.contact': 'Kontakt',
     'sidebar.programming': 'Programowanie',
@@ -111,10 +119,15 @@ const I18N = {
     'main.publications': 'Publikacje',
     'main.education': 'Wykształcenie',
 
-    'summary.text': 'Inżynier AI z ponad 4-letnim doświadczeniem w Samsung R&D Polska, dostarczający produkcyjne rozwiązania AI w obszarach <strong>tłumaczenia maszynowego (MT)</strong>, <strong>przetwarzania mowy</strong>, <strong>dużych modeli językowych (LLM)</strong> oraz <strong>generatywnej dyfuzji</strong>. Współautor trzech recenzowanych publikacji (<strong>Interspeech</strong> ×2, <strong>ICASSP</strong>). Pełna odpowiedzialność za cykl życia modeli głębokiego uczenia działających na urządzeniach i wdrożonych w produktach Samsung. Praktyczne doświadczenie w dostrajaniu <strong>Llama</strong>, <strong>LoRA</strong>, <strong>RAG</strong>, ASR <strong>Conformer</strong> oraz MLOps na <strong>AWS</strong> (SageMaker, Kubeflow).',
+    'summary.text': 'Inżynier AI w <strong>IBM</strong> pracujący z <strong>dużymi modelami językowymi (LLM)</strong> nad analizą rozmów, zadaniami językowymi i rozwiązaniami dla <strong>agentów AI do programowania</strong> oraz <strong>doktorant</strong> inżynierii biomedycznej w AGH (przetwarzanie mowy). Wcześniej ponad 4 lata w Samsung R&D Polska, dostarczając produkcyjne rozwiązania AI w obszarach <strong>tłumaczenia maszynowego (MT)</strong>, <strong>przetwarzania mowy</strong>, LLM oraz <strong>generatywnej dyfuzji</strong>. Współautor trzech recenzowanych publikacji (<strong>Interspeech</strong> ×2, <strong>ICASSP</strong>). Praktyczne doświadczenie w dostrajaniu <strong>Llama</strong>, <strong>LoRA</strong>, <strong>RAG</strong>, ASR <strong>Conformer</strong> oraz MLOps na <strong>AWS</strong> (SageMaker, Kubeflow).',
+
+    'exp.0.title': 'Inżynier AI',
+    'exp.0.date': 'wrz 2026 — obecnie',
+    'exp.0.b1': 'Praca z <strong>dużymi modelami językowymi (LLM)</strong> przy analizie rozmów i rozwiązywaniu zadań językowych.',
+    'exp.0.b2': 'Proponowanie i prototypowanie rozwiązań dla <strong>agentów AI do programowania</strong>.',
 
     'exp.1.title': 'Inżynier AI',
-    'exp.1.date': 'kwi 2025 — obecnie',
+    'exp.1.date': 'kwi 2025 — sie 2026',
     'exp.1.b1': 'Pełna odpowiedzialność za cykl życia modeli <strong>tłumaczenia maszynowego</strong> działających na urządzeniach (3 pary językowe, poniżej 1 mld parametrów) wdrożonych w produktach Samsung.',
     'exp.1.b2': 'Zbudowanie od podstaw potoków treningowych <strong>AWS SageMaker</strong>; osoba pierwszego kontaktu w zespole ds. SageMaker AI, S3, EC2, EFS. Trenowanie modeli klasyfikacji domen i wykrywania końca zdania dla potoków napisów telewizyjnych.',
     'exp.1.b3': 'Prowadzenie <strong>badań nad generatywną muzyką w czasie rzeczywistym</strong> na urządzeniu z użyciem transformerów MIDI; współautorstwo pracy ICASSP 2025 o dyfuzji latentnej dla mowy.',
@@ -141,9 +154,12 @@ const I18N = {
     'pub.3.desc': '— Publiczny zbiór testowy, ~50 000 słów kluczowych, 5 języków.',
     'pub.3.contrib': 'przygotowanie zbioru danych i skrypty przetwarzające.',
 
+    'edu.0.degree': 'Doktorant, Inżynieria biomedyczna',
+    'edu.0.date': '2026 — obecnie',
+    'edu.0.note': 'Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej (EAIiIB) · Badania: przetwarzanie mowy',
     'edu.1.degree': 'mgr inż. Sztuczna inteligencja i analiza danych',
     'edu.2.degree': 'inż. Inżynieria biomedyczna',
-    'edu.school': 'Akademia Górniczo-Hutnicza (AGH), Kraków',
+    'edu.school': 'Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie (AGH)',
 
     'consent.heading': 'Zgoda na przetwarzanie danych',
     'consent.text': 'Wyrażam zgodę na przetwarzanie danych osobowych zawartych w niniejszym dokumencie do realizacji procesu rekrutacji zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych (Dz.U. z 2018 r. poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).'
